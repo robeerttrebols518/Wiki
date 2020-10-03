@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="row">
+            <div class="sidebar col-lg-2 col-md-3">
+                <h2 class="row justify-content-center align-items-center">Wiki</h2>
+                <form method="post" action="{% url 'index' %}">
+                {% csrf_token %}
+                    {{form.news}}
+                </form>
+                <div class="container">
+                    <ul class="list-group">
+                        <li class="nav-link"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-link"><a href="{% url 'createPage' %}">Create New Page</a></li>
+                        <li class="nav-link"><a href="{% url 'random' %}">Random Page</a></li>
+                   </ul>
+                </div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="row justify-content-center align-items-center">Edit page</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <div style="width: 100%;">{{editPage}}</div>
+            <br>
+            <input class="save btn btn-info" type="submit" value="Save"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

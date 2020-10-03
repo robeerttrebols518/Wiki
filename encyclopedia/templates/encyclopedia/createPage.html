@@ -1,0 +1,21 @@
+﻿{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="row justify-content-center align-items-center">Create new page</h2>
+    <form method="post" action="{% url 'createPage' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="formGroupExampleInput">Title:</label>
+            <div>{{post.title}}</div><br>
+            <div style="width: 100%;">{{post.textarea}}</div>
+            <br>
+        <input class="save btn btn-info" type="submit" value="Save"/>
+        </div>
+    </form>
+</div> 
+{% endblock %}
